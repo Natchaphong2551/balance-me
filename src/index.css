@@ -1,0 +1,56 @@
+@import "tailwindcss";
+
+/* ====== Dark Theme Tokens ====== */
+:root {
+  --bg-0: #0B0B0F;      /* พื้นหลังลึก */
+  --bg-1: #0F0F17;      /* ไล่ชั้น */
+  --card: #14141D;      /* การ์ด/กล่อง */
+  --border: #242436;    /* เส้นขอบ */
+  --muted: #A7A3C2;     /* ตัวหนังสือรอง */
+  --text: #EEE9FF;      /* ตัวหนังสือหลัก */
+  --accent: #7C4DFF;    /* ม่วงหลัก */
+  --accent-2: #9E7CFF;  /* ม่วงรอง/gradient */
+  --accent-3: #5635CC;  /* ม่วงเข้ม */
+  --good: #36C38C;      /* บวก */
+  --bad:  #F87171;      /* ลบ */
+}
+
+/* พื้นหลังและตัวหนังสือทั้งแอป */
+html, body, #root {
+  height: 100%;
+  background: radial-gradient(1100px 600px at 30% -10%, rgba(124,77,255,.12), transparent 60%),
+              linear-gradient(to bottom, var(--bg-0), var(--bg-1));
+  color: var(--text);
+}
+
+/* ====== Reusable Components ====== */
+@layer components {
+  .container-page {@apply max-w-6xl mx-auto px-4;}
+
+  .card   {@apply rounded-3xl border shadow-sm p-4; background-color: var(--card); border-color: var(--border);}
+  .card-lg{@apply rounded-3xl border shadow p-6;    background-color: var(--card); border-color: var(--border);}
+  .pill   {@apply rounded-2xl px-3 py-1.5 border; border-color: var(--border);}
+
+  .btn {@apply rounded-2xl px-4 py-2 font-medium transition duration-200;}
+  .btn-primary {background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: white;}
+  .btn-primary:hover {filter: brightness(1.05);}
+  .btn-outline {@apply border; border-color: var(--border); color: var(--text); background: transparent;}
+  .btn-outline:hover {background-color: rgba(255,255,255,0.04);}
+  .btn-tab {@apply rounded-xl px-3 py-1.5 border; border-color: var(--border);}
+  .btn-tab-active {background: linear-gradient(135deg, var(--accent-3), var(--accent)); color: #fff; border-color: transparent;}
+
+  .input, .select, .textarea {
+    @apply w-full rounded-xl px-3 py-2 border outline-none;
+    background-color: #11121A; border-color: var(--border); color: var(--text);
+  }
+  .input:focus, .select:focus, .textarea:focus {box-shadow: 0 0 0 2px rgba(124,77,255,.35);}
+
+  .table-dark { @apply min-w-full text-sm; }
+  .table-dark thead th { @apply px-3 py-2 text-left border-b; border-color: var(--border); color: var(--muted);}
+  .table-dark tbody td { @apply px-3 py-2 align-top;}
+  .table-dark tbody tr:nth-child(odd) { background-color: rgba(255,255,255,0.02); }
+
+  .muted { color: var(--muted); }
+  .good  { color: var(--good); }
+  .bad   { color: var(--bad); }
+}
