@@ -34,6 +34,7 @@ export default function Login() {
           เข้าสู่ระบบ Balance Me
         </h1>
         {err && <p className="text-red-400 text-sm mb-2 text-center">{err}</p>}
+
         <form onSubmit={onSubmit} className="flex flex-col gap-4">
           <input
             type="text"
@@ -51,6 +52,7 @@ export default function Login() {
           />
           <button type="submit" className="btn-primary">เข้าสู่ระบบ</button>
         </form>
+
         <p className="text-center text-sm mt-6 text-gray-400">
           ยังไม่มีบัญชี?{" "}
           <Link to="/register" className="text-purple-400 hover:text-fuchsia-400">

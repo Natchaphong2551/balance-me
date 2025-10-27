@@ -5,6 +5,7 @@ import ProjectDetail from "./pages/ProjectDetail.jsx";
 import Summary from "./pages/Summary.jsx";
 import Login from "./pages/Login.jsx";
 import Register from "./pages/Register.jsx";
+import Profile from "./pages/Profile.jsx";
 import ProtectedRoute from "./auth/ProtectedRoute.jsx";
 import { motion } from "framer-motion";
 import { useAuth } from "./auth/AuthContext";
@@ -24,6 +25,7 @@ export default function App() {
               <>
                 <Link to="/" className="hover:text-purple-400">โครงการ</Link>
                 <Link to="/summary" className="hover:text-purple-400">สรุปบัญชี</Link>
+                <Link to="/profile" className="hover:text-purple-400">โปรไฟล์</Link>
                 <button onClick={logout} className="hover:text-fuchsia-400">ออกจากระบบ</button>
               </>
             ) : (
@@ -43,11 +45,15 @@ export default function App() {
         transition={{ duration: 0.4 }}
       >
         <Routes>
+          {/* public */}
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+
+          {/* protected */}
           <Route path="/" element={<ProtectedRoute><Home /></ProtectedRoute>} />
           <Route path="/project/:id" element={<ProtectedRoute><ProjectDetail /></ProtectedRoute>} />
           <Route path="/summary" element={<ProtectedRoute><Summary /></ProtectedRoute>} />
+          <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
         </Routes>
       </motion.main>
 

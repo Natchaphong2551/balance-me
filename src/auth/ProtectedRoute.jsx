@@ -4,7 +4,7 @@ import { useAuth } from "./AuthContext";
 
 export default function ProtectedRoute({ children }) {
   const { user } = useAuth();
-  if (user === undefined) return <div className="muted text-sm">กำลังตรวจสอบสิทธิ์…</div>;
+  if (user === undefined) return null; // กำลังโหลดสถานะ
   if (!user) return <Navigate to="/login" replace />;
   return children;
 }
